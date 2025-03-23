@@ -3,11 +3,14 @@ package main
 import ( 
 	"fmt"
 	"strconv"
+	"strings"
 ) 
 
 func main() {
-	test()
-	testTwo()
+	// test()
+	// testTwo()
+	// funcForSlices()
+	stringsFunc()
 }
 
 // Interface
@@ -38,43 +41,38 @@ func printParam(s string) {
 	fmt.Printf(`Printed: %s`, s)
 }
 
-func callFunc(func (int) int) {
-	
-}
-
-
 // Slice
 
 var newSlice []int
 
 // possible to create this way only in functions
 
-func funcForSlices() {
-	newSlice := []string{"First value", "Second value", "Third value"}
-	makeNewSlice := make([]int, 5)
-	makeNewSliceWithCapacity := make([]int, 5, 3)
+// func funcForSlices() {
+	// newSlice := []string{"First value", "Second value", "Third value"}
+// 	makeNewSlice := make([]int, 5)
+// 	makeNewSliceWithCapacity := make([]int, 5, 3)
 
-	arr := [5]int{1, 2, 3, 4, 5}
-	arrSlice := arr[1:4]
+	// newSlice = append(newSlice, "Fourth")
+	// fmt.Println(newSlice)
 
-	newSlice = append(newSlice, )
+// 	arr := [5]int{1, 2, 3, 4, 5}
+// 	arrSlice := arr[1:4]
 
-	matrixSlice := [][]int{
-		{1, 2, 3},
-		{4, 5, 6},
+// 	matrixSlice := [][]int{
+// 		{1, 2, 3},
+// 		{4, 5, 6},
+// 	}
+// }
+
+
+// Strings
+
+func stringsFunc() {
+	var str = "AaAaA"
+	fmt.Println(strings.ToLower(str))
+
+	if strings.Contains(str, "B") {
+		fmt.Println("B is here!")
 	}
 }
-
-
-// Loop (slice)
-
-func loopFunction() {
-	messages := []string{"first message", "Second", "Third message"}
-	for index, value := range messages {
-		fmt.Println(index)
-		printParam()
-	}
-}
-
-
 
