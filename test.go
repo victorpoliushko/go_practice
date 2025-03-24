@@ -9,9 +9,25 @@ import (
 func main() {
 	// test()
 	// testTwo()
+	goVars()
 	// funcForSlices()
-	stringsFunc()
+	// stringsFunc()
 }
+
+
+// Variable creation
+
+func goVars() {
+	var a = "apple"
+	fmt.Println(a)
+	var bread, milk string = "Bread", "Milk"
+	fmt.Println(bread, milk)
+	var empty int
+	fmt.Println(empty)
+	water := "Water"
+	fmt.Println(water)
+}
+
 
 // Interface
 
