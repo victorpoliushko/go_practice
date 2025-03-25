@@ -9,9 +9,10 @@ import (
 func main() {
 	// test()
 	// testTwo()
-	goVars()
+	// goVars()
 	// funcForSlices()
 	// stringsFunc()
+	mapsFunc()
 }
 
 
@@ -92,3 +93,22 @@ func stringsFunc() {
 	}
 }
 
+
+// Maps
+
+func mapsFunc() {
+	ages := make(map[string]int)
+	ages["johny"] = 25
+	ages["bill"] = 40
+	// overrides bill
+	ages["bill"] = 51
+
+	fmt.Println(len(ages))
+
+	tickers := map[string]string{
+		"GOOG": "google",
+		"HOOD": "robin hood",
+	}
+
+	fmt.Println(tickers)
+}
