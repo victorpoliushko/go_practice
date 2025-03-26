@@ -111,4 +111,21 @@ func mapsFunc() {
 	}
 
 	fmt.Println(tickers)
+
+
+	m := make(map[string]int)
+	// insert element
+	m["BMW"] = 1
+
+	// get an element
+	var elem int
+	elem = m["BMW"]
+	fmt.Println(elem)
+
+	// delete an element
+	delete(m, "BMW")
+
+	// check if a key exists
+	elem, ok := m["BMW"]
+	fmt.Println(elem, ok)
 }
