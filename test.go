@@ -128,4 +128,15 @@ func mapsFunc() {
 	// check if a key exists
 	elem, ok := m["BMW"]
 	fmt.Println(elem, ok)
+
+	// map of maps
+	hits := make(map[string]map[string]int)
+	fmt.Println(hits)
+
+	// Count instance
+	missingAges := []string{}
+	if _, ok := ages["tony"]; !ok {
+		missingAges = append(missingAges, "tony")
+	}
+	fmt.Println(missingAges)
 }
