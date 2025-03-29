@@ -1,7 +1,8 @@
 package main
 
-import ( 
+import (
 	"fmt"
+	"log"
 	"strconv"
 	"strings"
 ) 
@@ -139,4 +140,14 @@ func mapsFunc() {
 		missingAges = append(missingAges, "tony")
 	}
 	fmt.Println(missingAges)
+
+	// comma ok, used to distinguish a missing entry from a zero value
+	// var seconds int
+	// var ok bool
+	// if seconds, ok := timezone[tz]; ok {
+	// 	return seconds
+	// }
+	// log.Println("unknown timezone: ", tz)
+	// return 0
+	
 }
