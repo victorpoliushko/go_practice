@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	"log"
+	// "log"
 	"strconv"
 	"strings"
+	"unicode/utf8"
 ) 
 
 func main() {
@@ -12,8 +13,8 @@ func main() {
 	// testTwo()
 	// goVars()
 	// funcForSlices()
-	// stringsFunc()
-	mapsFunc()
+	stringsFunc()
+	// mapsFunc()
 }
 
 
@@ -92,6 +93,8 @@ func stringsFunc() {
 	if strings.Contains(str, "B") {
 		fmt.Println("B is here!")
 	}
+
+	fmt.Println("Rune count: ", utf8.RuneCountInString(str))
 }
 
 
