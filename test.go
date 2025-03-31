@@ -136,6 +136,7 @@ func mapsFunc() {
 	// map of maps
 	hits := make(map[string]map[string]int)
 	fmt.Println(hits)
+	// map[string]map[int]map[string]int
 
 	// Count instance
 	missingAges := []string{}
