@@ -153,5 +153,20 @@ func mapsFunc() {
 	// }
 	// log.Println("unknown timezone: ", tz)
 	// return 0
-	
+
 }
+
+// Fill nested maps
+func fillNestedMaps(names []string) map[rune]map[string]int {
+	newMap := make(map[rune]map[string]int);
+
+	for _, name := range names {
+		runes := []rune(name)
+		if newMap[runes[0]] == nil {
+			newMap[runes[0]] = make(map[string]int)
+		}
+		newMap[runes[0]][name]++
+	}
+	return newMap
+}
+
