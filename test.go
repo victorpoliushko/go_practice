@@ -13,8 +13,9 @@ func main() {
 	// testTwo()
 	// goVars()
 	// funcForSlices()
-	stringsFunc()
+	// stringsFunc()
 	// mapsFunc()
+	countDistinctWords([]string{"WTS wtb", "inv lfg", "INV lfm"})
 }
 
 
@@ -170,3 +171,14 @@ func fillNestedMaps(names []string) map[rune]map[string]int {
 	return newMap
 }
 
+
+func countDistinctWords(messages []string) int {
+	wordsMap := make(map[string]int)
+	for _, message := range messages {
+		wordsSlice := strings.Fields(message)
+		for _, word := range wordsSlice {
+			wordsMap[strings.ToLower(word)]++
+		}
+	}
+	return len(wordsMap)
+}
