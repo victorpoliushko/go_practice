@@ -8,6 +8,8 @@ import (
 	"unicode/utf8"
 ) 
 
+
+
 func main() {
 	// test()
 	// testTwo()
@@ -15,7 +17,16 @@ func main() {
 	// funcForSlices()
 	// stringsFunc()
 	// mapsFunc()
-	countDistinctWords([]string{"WTS wtb", "inv lfg", "INV lfm"})
+	// countDistinctWords([]string{"WTS wtb", "inv lfg", "INV lfm"})
+
+	friendships := map[string][]string{
+    "Alice":   {"Bob", "Charlie"},
+    "Bob":     {"Alice", "Charlie", "David"},
+    "Charlie": {"Alice", "Bob", "David", "Eve"},
+    "David":   {"Bob", "Charlie"},
+    "Eve":     {"Charlie"},
+	}
+	findSuggestedFriends("Alice", friendships)
 }
 
 
@@ -171,7 +182,7 @@ func fillNestedMaps(names []string) map[rune]map[string]int {
 	return newMap
 }
 
-
+// Maps + Slices
 func countDistinctWords(messages []string) int {
 	wordsMap := make(map[string]int)
 	for _, message := range messages {
@@ -181,4 +192,32 @@ func countDistinctWords(messages []string) int {
 		}
 	}
 	return len(wordsMap)
+}
+
+// Search in a map of slices 
+func findSuggestedFriends(username string, friendships map[string][]string) []string {
+	var directFriendsSet = make(map[string]bool) 
+	for _, friend := range friendships[username] {
+		directFriendsSet[friend] = true
+	}
+
+	var suggestions = make(map[string]bool)
+
+	for _, friend := range friendships[username] {
+		for _, friendOfFriend := range friendships[friend] {
+			if friendOfFriend != username && !directFriendsSet[friendOfFriend] {
+				suggestions[friendOfFriend] = true
+			}
+		}
+	}
+
+	var res []string
+	// sug is a key
+	for sug := range suggestions {
+		res = append(res, sug)
+	}
+	if len(res) == 0 {
+		return nil
+	}
+	return res
 }
