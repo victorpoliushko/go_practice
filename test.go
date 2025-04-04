@@ -19,14 +19,19 @@ func main() {
 	// mapsFunc()
 	// countDistinctWords([]string{"WTS wtb", "inv lfg", "INV lfm"})
 
-	friendships := map[string][]string{
-    "Alice":   {"Bob", "Charlie"},
-    "Bob":     {"Alice", "Charlie", "David"},
-    "Charlie": {"Alice", "Bob", "David", "Eve"},
-    "David":   {"Bob", "Charlie"},
-    "Eve":     {"Charlie"},
-	}
-	findSuggestedFriends("Alice", friendships)
+	// friendships := map[string][]string{
+  //   "Alice":   {"Bob", "Charlie"},
+  //   "Bob":     {"Alice", "Charlie", "David"},
+  //   "Charlie": {"Alice", "Bob", "David", "Eve"},
+  //   "David":   {"Bob", "Charlie"},
+  //   "Eve":     {"Charlie"},
+	// }
+	// findSuggestedFriends("Alice", friendships)
+
+// 	fmt.Println(logAndDelete(map[string]user{
+// 		"laura": {name: "laura", number: 4355556023, admin: false},
+// 		"dale":  {name: "dale", number: 8015558937, admin: true},
+// 	}, "dale"))
 }
 
 
@@ -221,3 +226,33 @@ func findSuggestedFriends(username string, friendships map[string][]string) []st
 	}
 	return res
 }
+
+// Defer 
+
+// const (
+// 	logDeleted = "user deleted"
+// 	logNotFound = "user not found"
+// 	logAdmin = "user admin deleted"
+// )
+
+// type user struct {
+// 	name string
+// 	number int
+// 	admin bool
+// }
+
+// func logAndDelete(users map[string]user, name string) (log string) {
+// 	defer delete(users, name)
+
+// 	user, ok := users[name]
+
+// 	if !ok {
+// 		return logNotFound
+// 	}
+
+// 	if user.admin {
+// 		return logAdmin
+// 	}
+
+// 	return logDeleted
+// }
