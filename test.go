@@ -28,10 +28,23 @@ func main() {
 	// }
 	// findSuggestedFriends("Alice", friendships)
 
-// 	fmt.Println(logAndDelete(map[string]user{
-// 		"laura": {name: "laura", number: 4355556023, admin: false},
-// 		"dale":  {name: "dale", number: 8015558937, admin: true},
-// 	}, "dale"))
+	// 	fmt.Println(logAndDelete(map[string]user{
+	// 		"laura": {name: "laura", number: 4355556023, admin: false},
+	// 		"dale":  {name: "dale", number: 8015558937, admin: true},
+	// 	}, "dale"))
+
+
+	// Pointers
+	a := 1
+	fmt.Println("Init: ", a)
+
+	basicVar(a)
+	fmt.Println("basic: ", a)
+
+	zeroVar(&a)
+	fmt.Println("zeroVar: ", a)
+
+	fmt.Println("pointer:", &a)
 }
 
 
@@ -256,3 +269,13 @@ func findSuggestedFriends(username string, friendships map[string][]string) []st
 
 // 	return logDeleted
 // }
+
+
+// Pointer
+func basicVar(a int) {
+	a = 0
+}
+
+func zeroVar(aPointer *int) {
+	*aPointer = 0
+}
