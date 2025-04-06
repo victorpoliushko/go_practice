@@ -35,16 +35,22 @@ func main() {
 
 
 	// Pointers
-	a := 1
-	fmt.Println("Init: ", a)
+	// a := 1
+	// fmt.Println("Init: ", a)
 
-	basicVar(a)
-	fmt.Println("basic: ", a)
+	// basicVar(a)
+	// fmt.Println("basic: ", a)
 
-	zeroVar(&a)
-	fmt.Println("zeroVar: ", a)
+	// zeroVar(&a)
+	// fmt.Println("zeroVar: ", a)
 
-	fmt.Println("pointer:", &a)
+	// fmt.Println("pointer:", &a)
+
+
+	// Replace string for pointer
+	p := "English, motherfubber, do you speak it? Shiz"
+	replaceStrings(&p)
+	fmt.Println(p)
 }
 
 
@@ -278,4 +284,19 @@ func basicVar(a int) {
 
 func zeroVar(aPointer *int) {
 	*aPointer = 0
+}
+
+
+// strings.ReplaceAll with pointer
+func replaceStrings(message *string) {
+	badWords := []string{"fub", "shiz"}
+
+	for _, word := range badWords {
+		replacement := ""
+		for i := 0; i < len(word); i++ {
+			replacement += "*"
+		}
+
+		*message = strings.ReplaceAll(strings.ToLower(*message), word, replacement)
+	}
 }
