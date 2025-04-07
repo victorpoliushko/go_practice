@@ -48,9 +48,16 @@ func main() {
 
 
 	// Replace string for pointer
-	p := "English, motherfubber, do you speak it? Shiz"
-	replaceStrings(&p)
-	fmt.Println(p)
+	// p := "English, motherfubber, do you speak it? shiz"
+	// replaceStrings(&p)
+	// fmt.Println(p)
+
+
+	// Pointers: update original value
+	// new()
+
+	// Pointers: what is the result? 100
+	pointerTest()
 }
 
 
@@ -297,6 +304,26 @@ func replaceStrings(message *string) {
 			replacement += "*"
 		}
 
-		*message = strings.ReplaceAll(strings.ToLower(*message), word, replacement)
+		*message = strings.ReplaceAll(*message, word, replacement)
 	}
+}
+
+// Pointers: update original value
+func increment(i *int) {
+	*i++;
+	fmt.Println("Increment func: ", *i)
+}
+
+func new() {
+	i := 5
+	increment(&i)
+	fmt.Println("New func:", i)
+}
+
+// Pointers: what is the result?
+func pointerTest() {
+	var x int = 50
+	var y *int = &x
+	*y = 100
+	fmt.Println("*y =", *y)
 }
