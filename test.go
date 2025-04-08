@@ -56,8 +56,11 @@ func main() {
 	// Pointers: update original value
 	// new()
 
-	// Pointers: what is the result? 100
+	// Pointers: What is the value of *y after the code on the left executes?
 	pointerTest()
+
+	// Pointers: What is the value of x after the entire code block on the left executes?
+	pointerTestTwo()
 }
 
 
@@ -320,10 +323,20 @@ func new() {
 	fmt.Println("New func:", i)
 }
 
-// Pointers: what is the result?
+// Pointers: 
+// What is the value of *y after the code on the left executes?
 func pointerTest() {
 	var x int = 50
 	var y *int = &x
 	*y = 100
 	fmt.Println("*y =", *y)
 }
+
+// Pointers: What is the value of x after the entire code block on the left executes?
+func pointerTestTwo() {
+	var x int = 50
+	var y *int = &x
+	*y = 100
+	fmt.Println("x =", x)
+}
+
