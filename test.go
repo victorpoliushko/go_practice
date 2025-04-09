@@ -340,3 +340,11 @@ func pointerTestTwo() {
 	fmt.Println("x =", x)
 }
 
+// Pointers: before using a pointer it's value should be checked to avoid panic
+func emptyPointer(a *int) {
+	if a == nil {
+		return
+	}
+
+	// rest of the function
+}
