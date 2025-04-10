@@ -348,3 +348,14 @@ func emptyPointer(a *int) {
 
 	// rest of the function
 }
+
+// Pointers: pointer reciever
+func (e *email) sendMessage(newMessage string) {
+	e.message = newMessage
+}
+
+type email struct {
+	message string
+	fromAddress string
+	toAddress string
+}
