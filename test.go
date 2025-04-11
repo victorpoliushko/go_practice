@@ -359,3 +359,5 @@ type email struct {
 	fromAddress string
 	toAddress string
 }
+
+// Pointers: performance vise just variables are created faster taht pointers because they go into stack while pointer go into heap
