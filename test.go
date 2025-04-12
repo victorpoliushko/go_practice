@@ -6,6 +6,7 @@ import (
 	"strconv"
 	"strings"
 	"unicode/utf8"
+	"errors"
 ) 
 
 
@@ -361,3 +362,39 @@ type email struct {
 }
 
 // Pointers: performance vise just variables are created faster taht pointers because they go into stack while pointer go into heap
+
+
+// Pointers: update struct values
+type customer struct {
+	id      int
+	balance float64
+}
+
+type transactionType string
+
+const (
+	transactionDeposit    transactionType = "deposit"
+	transactionWithdrawal transactionType = "withdrawal"
+)
+
+type transaction struct {
+	customerID      int
+	amount          float64
+	transactionType transactionType
+}
+
+func updateBalance (c *customer, tx transaction) error {
+	switch tx.transactionType {
+	case transactionWithdrawal:
+		if c.balance < tx.amount {
+			return errors.New("insufficient funds")
+		}
+		c.balance -= tx.amount
+	case transactionDeposit:
+		c.balance += tx.amount
+	default:
+		return errors.New("unknown transaction type")
+	}
+	return nil
+}
+
