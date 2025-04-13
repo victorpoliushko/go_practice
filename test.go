@@ -398,3 +398,6 @@ func updateBalance (c *customer, tx transaction) error {
 	return nil
 }
 
+// Packages: naming convension
+// repo: github.com/mailio/rand
+// package name: package rand
