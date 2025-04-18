@@ -401,3 +401,10 @@ func updateBalance (c *customer, tx transaction) error {
 // Packages: naming convension
 // repo: github.com/mailio/rand
 // package name: package rand
+
+
+// Packages:
+// Each repo is a singe module
+// each repo contains one or more packages
+// each repo consists of one or more Go sources files in a singe directory
+// The path to a package's directory determines its import path and where it can be downloaded from
