@@ -7,6 +7,7 @@ import (
 	"strings"
 	"unicode/utf8"
 	"errors"
+	"time"
 ) 
 
 
@@ -62,6 +63,11 @@ func main() {
 
 	// Pointers: What is the value of x after the entire code block on the left executes?
 	pointerTestTwo()
+
+	// Concurrency
+	concurrencyTestEmail("Hello there Kaladin!")
+	concurrencyTestEmail("Hi there Shallan!")
+	concurrencyTestEmail("Hey there Dalinar!")
 }
 
 
@@ -408,3 +414,18 @@ func updateBalance (c *customer, tx transaction) error {
 // each repo contains one or more packages
 // each repo consists of one or more Go sources files in a singe directory
 // The path to a package's directory determines its import path and where it can be downloaded from
+
+// Concurrency
+func sendEmail(message string) {
+	go func() {
+		time.Sleep(time.Millisecond * 250)
+		fmt.Printf("Email received: '%s'\n", message)
+	}()
+	fmt.Printf("Email sent: '%s'\n", message)
+}
+
+func concurrencyTestEmail(message string) {
+	sendEmail(message)
+	time.Sleep(time.Millisecond * 500)
+	fmt.Println("=======================")
+}
