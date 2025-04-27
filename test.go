@@ -429,3 +429,31 @@ func concurrencyTestEmail(message string) {
 	time.Sleep(time.Millisecond * 500)
 	fmt.Println("=======================")
 }
+
+// Channels
+type channelsEmail struct {
+	body string
+	date time.Time
+}
+
+func checkEmailAge(emails [3]channelsEmail) [3]bool {
+	isOldChan := make(chan bool)
+
+	go sendIsOld(isOldChan, emails)
+
+	isOld := [3]bool{}
+	isOld[0] = <-isOldChan
+	isOld[1] = <-isOldChan
+	isOld[2] = <-isOldChan
+	return isOld
+}
+
+func sendIsOld(isOldChan chan <- bool, emails [3]channelsEmail) {
+	for _, e := range emails {
+		if e.date.Before(time.Date(2020, 0, 0, 0, 0, 0, 0, time.UTC)) {
+			isOldChan <- true
+			continue
+		}
+		isOldChan <- false
+	}
+}
