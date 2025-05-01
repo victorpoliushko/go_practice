@@ -481,3 +481,37 @@ func getDBsChannel(numDBs int) (chan struct{}, *int) {
 
 	return ch, &count
 }
+
+// Channels: Buffers
+// Complete the addEmailsToQueue function. It should create a buffered channel with a buffer 
+// large enough to store all of the emails it's given. It should then write the emails to the 
+// channel in order, and finally return the channel.
+func addEmailsToQueue(emails []string) chan string {
+	ch := make(chan string, len(emails))
+	for _, email := range emails {
+		ch <- email
+	}
+	return ch
+}
+
+// Channels: Close channel
+func countReports(numSentCh chan int) int {
+	total := 0
+	for {
+		v, ok := <- numSentCh
+		if !ok {
+			return total
+		}
+		total += v
+	}
+	return total
+}
+
+func sendReports(numBatches int, ch chan int) {
+	for i := 0; i < numBatches; i++ {
+		numReports := i*23 + 32%17
+		ch <- numReports
+	}
+	close(ch)
+}
+
