@@ -515,3 +515,31 @@ func sendReports(numBatches int, ch chan int) {
 	close(ch)
 }
 
+// simultaneous assignment
+// x, y = y, x + y
+// same as
+// tempX := x
+// tempY := y
+// x = tempY
+// y = tempX + tempY
+
+// Channels: range
+
+func concurrentFib(n int) []int {
+	ch := make(chan int)
+	go fibonacci(n, ch)
+	newSlice := []int{}
+	for item := range ch {
+		newSlice = append(newSlice, item)
+	}
+	return newSlice
+}
+
+func fibonacci(n int, ch chan int) {
+	x, y := 0, 1
+	for i := 0; i < n; i++ {
+		ch <- x
+		x, y = y, x+y
+	}
+	close(ch)
+}
