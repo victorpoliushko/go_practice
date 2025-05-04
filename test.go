@@ -543,3 +543,42 @@ func fibonacci(n int, ch chan int) {
 	}
 	close(ch)
 }
+
+// Channels: select
+// func logMessages(chEmails, chSms chan string) {
+// 	for {
+// 		select {
+// 		case email, ok := <-chEmails:
+// 			if !ok {
+// 				return
+// 			}
+// 			logEmail(email)
+// 		case sms, ok := <-chSms:
+// 			if !ok {
+// 				return
+// 			}
+// 			logSms(sms)
+// 		}
+// 	}
+// }
+
+// Channels: select default
+// func saveBackups(snapshotTicker, saveAfter <-chan time.Time, logChan chan string) {
+// 	for {
+// 		select {
+// 		case <-snapshotTicker:
+// 			takeSnapShot(logChan)
+// 		case <-saveAfter:
+// 			saveSnapshot(logChan)
+// 			return
+// 		default:
+// 			waitForData(logChan)
+// 			time.Sleep(500 * time.Microsecond)
+// 		}
+// 	}
+// }
+
+
+
+ 
+
