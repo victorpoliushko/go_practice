@@ -59,15 +59,20 @@ func main() {
 	// new()
 
 	// Pointers: What is the value of *y after the code on the left executes?
-	pointerTest()
+	// pointerTest()
 
 	// Pointers: What is the value of x after the entire code block on the left executes?
-	pointerTestTwo()
+	// pointerTestTwo()
 
 	// Concurrency
-	concurrencyTestEmail("Hello there Kaladin!")
-	concurrencyTestEmail("Hi there Shallan!")
-	concurrencyTestEmail("Hey there Dalinar!")
+	// concurrencyTestEmail("Hello there Kaladin!")
+	// concurrencyTestEmail("Hi there Shallan!")
+	// concurrencyTestEmail("Hey there Dalinar!")
+
+	// Channels
+	pingPongTest(3)
+	pingPongTest(4)
+	pingPongTest(2)
 }
 
 
@@ -578,7 +583,48 @@ func fibonacci(n int, ch chan int) {
 // 	}
 // }
 
+// Channels
+func pingPong(numPings int) {
+	pings := make(chan struct{})
+	pongs := make(chan struct{})
+	go ponger(pings, pongs)
+	go pinger(pings, numPings)
+	func() {
+		i := 0
+		for range pongs {
+			fmt.Println("got pong", i)
+			i++
+		}
+		fmt.Println("pongs done")
+	}()
+}
 
+func pinger(pings chan struct{}, numPings int) {
+	sleepTime := 50 * time.Millisecond
+	for i:= 0; i < numPings; i++ {
+		fmt.Printf("sending ping %v\n", i)
+		pings <- struct{}{}
+		time.Sleep(sleepTime)
+		sleepTime *= 2
+	}
+	close(pings)
+}
 
- 
+func ponger(pings, pongs chan struct{}) {
+	i := 0
+	for range pings {
+		fmt.Printf("got ping %v, sending pong %b\n", i, i)
+		pongs <- struct{}{}
+		i++
+	}
+	fmt.Println("pings done")
+	close(pongs)
+}
+
+func pingPongTest(numPings int) {
+	fmt.Println("Starting game...")
+	pingPong(numPings)
+	fmt.Println("===Game Over===")
+}
+
 
