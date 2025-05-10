@@ -664,3 +664,13 @@ func (sc safeCounter) slowVal(key string) int {
 	return sc.counts[key]
 }
 
+// Generics
+func getLast[T any](s []T) T {
+	if len(s) == 0 {
+		var zeroVal T
+		return zeroVal
+	} else {
+		lastVal := s[len(s) - 1]
+		return lastVal
+	}
+}
