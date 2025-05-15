@@ -688,8 +688,6 @@ func chargeForLineItem[T lineItem](newItem T, oldItems []T, balance float64) ([]
 	return newSlice, newBalance, nil
 }
 
-// don't edit below this line
-
 type lineItem interface {
 	GetCost() float64
 	GetName() string
@@ -728,3 +726,18 @@ func (otup oneTimeUsagePlan) GetCost() float64 {
 	const costPerEmail = 0.03
 	return float64(otup.numEmailsAllowed) * costPerEmail
 }
+
+
+// Eror handling
+
+// func (a *analytics) handleEmailBounce(em email) error {
+// 	uerr := em.recipient.updateStatus(em.status)
+// 	if uerr != nil {
+// 		return fmt.Errorf("error updating user status: %w", uerr)
+// 	}
+// 	terr := a.track(em.status)
+// 	if terr != nil {
+// 		return fmt.Errorf("error tracking user bounce: %w", terr)
+// 	}
+// 	return nil
+// }
