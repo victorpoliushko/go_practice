@@ -741,3 +741,40 @@ func (otup oneTimeUsagePlan) GetCost() float64 {
 // 	}
 // 	return nil
 // }
+
+
+// Type definitions
+type sendingChannel string
+
+const (
+	Email sendingChannel = "email"
+	Sms sendingChannel = "sms"
+	Phone sendingChannel = "phone"
+)
+
+func sendNotification(ch sendingChannel, message string) {}
+
+func typeDefs() {
+	sendingCh := "slack"
+	// cannot use sendingCh (variable of type string) as sendingChannel value in argument to sendNotification
+	sendNotification(sendingCh, "hello")
+
+	// all good here
+	sendNotification("slack", "hello")
+
+	// all good here
+	convertedSendingChannel := sendingChannel(sendingCh)
+	sendNotification(convertedSendingChannel, "hello")
+}
+
+// iota
+
+type emailStatus int
+
+const (
+	emailBounced emailStatus = iota
+	emailInvalid emailStatus = iota
+	emailDelivered emailStatus = iota
+	emailOpened emailStatus = iota
+)
+
